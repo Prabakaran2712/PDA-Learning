@@ -1,18 +1,26 @@
-const mongoClient = require('mongodb').MongoClient;
-url="mongodb://localhost:27017/pdaweb";
-mongoClient.connect(url, function(err, db) {
-    if (err) {
-        console.log('Sorry unable to connect to MongoDB Error:', err);
-    } else {
-        console.log("Connected successfully to server", url);
-        var collection = db.collection('studentdetails');
-  
-        console.log("Print persons collection:- ");
-  
-        collection.find({}).toArray(function(err, person) {
-            console.log(JSON.stringify(person, null, 2));
-        });
-  
-        db.close();
-    }
-});
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://localhost:27017/test');
+}
+const schema=mongoose.Schema
+const Schema = new schema({
+    name: String,
+    rollnumber:Number,
+    password:String,
+    email:String
+  });
+
+  const mymodel = mongoose.model('studentdetails', Schema);
+  module.exports=mymodel;
+
+
+// mymodel.find()
+// .then((result)=>{console.log(result)})
+// .catch((err)=>{console.log(err)});
+// mymodel.deleteMany({ rollnumber:2020506062 }, function (err) {
+//     if(err) console.log(err);
+//     console.log("Successful deletion");
+//   });

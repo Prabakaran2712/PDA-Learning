@@ -1,19 +1,18 @@
 {
-  "name": "pda-website",
+  "name": "login",
   "version": "1.0.0",
-  "description": "signup",
-  "main": "app.js",
+  "description": "for learning",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
-  "author": "Prabakaran",
-  "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "fs": "^0.0.1-security",
-    "mongodb": "^2.2.33",
-    "mongoose": "^6.0.12",
+    "mariadb": "^2.5.5",
     "nodemon": "^2.0.14"
   }
 }

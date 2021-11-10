@@ -24,7 +24,68 @@
     <title>Register</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="app.js"></script>
+    <script>
+        function check()
+{
+var p1=document.getElementById('ep').value;
+var p2=document.getElementById('cp').value;
+if(p1!=p2){
+	document.getElementById('show').innerHTML="Incorrect";
+return false;}
+else{
+	document.getElementById('show').innerHTML="Correct";}
+}
+
+function cname()
+{
+var na=document.getElementById("n").value;
+var pt=/^[A-Za-z]+$/;
+
+if(na==""){
+document.getElementById("demo1").innerHTML="Please Enter your name";
+return false;}
+else{
+document.getElementById("demo1").innerHTML="";}
+
+if(na.match(pt))
+true;
+else{
+document.getElementById("demo1").innerHTML="Invalid-Only Alphabets are allowed";
+return false;}
+}
+
+function rcheck()
+{
+var sid=document.getElementById("uid").value;
+var pt=/^[A-Za-z]+$/;
+if(!sid.match(pt))
+true;
+else{document.getElementById("demo2").innerHTML="Only numbers are allowed";
+return false;}
+if(sid.length!=8){
+document.getElementById("demo2").innerHTML="Roll number must be of length 8";
+return false;}
+else{
+document.getElementById("demo2").innerHTML="";}
+if(sid==""){
+document.getElementById("demo2").innerHTML="Please Enter your Roll number";
+return false;}
+}
+
+function rmail()
+{
+var e=document.getElementById("mail").value;
+var p=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if(e.match(p)){
+document.getElementById("demo3").innerHTML="";
+return true;
+}
+else{
+document.getElementById("demo3").innerHTML="Invalid";
+return false;}
+}
+
+    </script>
 </head>
 <body>
 <div class="title">
@@ -40,31 +101,32 @@
   <%}%>
 
   
-<div class="formbox">
+  <div class="formbox">
     
-<form action="/" method="POST">
-    <div class="forminbox">
+    <form action="/" method="POST" >
+        <div class="forminbox">
+            <div class="formelement">
+        <label>Roll Number : </label>
+        <input type="tel" id="uid" name="id" placeholder="Enter Roll number " oninput="rcheck();"><p id="demo2"></p></div> 
+      <div class="formelement">
+        <label>Password</label>
+        <input type="password" id="ep" name="pass" placeholder="Enter Password" required;></div>
         <div class="formelement">
-    <label>Roll Number : </label>
-    <input type="number" name="id" placeholder="Enter Roll number "></div> 
-    <div class="formelement">
-    <label>Password</label>
-    <input type="password" name="pass" placeholder="Enter Password"></div>  
-    <div class="formelement">
-        <label>Confirm Password</label>
-    <input type="password" name="cpass" placeholder="Enter Password again "></div>  
-    <div class="formelement">
-        <label>Email</label>
-    <input type="email" name="email" placeholder="Enter yonur email address"></div>  
-    <div class="formelement">
-        <label>Name</label>
-    <input type="text" name="name" placeholder="Enter name"></div>  
-    <div class="formelement">
-    <input type="submit" value="register">
+            <label>Confirm Password</label>
+        <input type="password" id="cp" name="cpass" placeholder="Enter Password again" oninput="check();"><p id="show"></p></div> 
+        <div class="formelement">
+            <label>Email</label>
+        <input type="email" id="mail" name="email" placeholder="Enter your email address" oninput="rmail();"><p id="demo3"></p></div>  
+        <div class="formelement">
+            <label>Name</label>
+        <input type="text" id="n" name="name" placeholder="Enter name" oninput="cname();"><p id="demo1"></p></div>  
+        <div class="formelement">
+        <input type="submit" value="register">
+        </div>
     </div>
-</div>
-
-
-</form>
-</div>
+    
+    
+    </form>
+    </div>
+    </body> 
 </body> 
